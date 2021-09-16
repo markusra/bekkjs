@@ -104,7 +104,11 @@ class Worker {
     }
   }
 
-  private static updateDom(dom: Node, prevProps: Props, nextProps: Props) {
+  private static updateDom(
+    dom: Node | HTMLElement | Text,
+    prevProps: Props,
+    nextProps: Props
+  ) {
     // Remove properties that are gone
     Object.keys(prevProps)
       .filter(PropUtils.isProperty)
@@ -188,10 +192,15 @@ class Worker {
     let prevSibling: Fiber | null = null;
     let oldFiber: Fiber | null = fiber.alternate?.child;
 
+    // TODO: Get old keys from fiber
+    // Question: Do we need all the new keys aswell?
+
     let index = 0;
     while (index < elements.length) {
       const element: Didact.Element = elements[index];
       let newFiber: Fiber | null = null;
+
+      // Check keys
 
       const isSameType = oldFiber?.type === element?.type;
       const shouldUpdateDom = oldFiber || element;
@@ -242,6 +251,8 @@ class Worker {
       prevSibling = newFiber;
       index++;
     }
+
+    // Question: Return new keys?
   }
 
   // Hooks
@@ -255,11 +266,12 @@ class Worker {
     };
 
     (oldHook?.queue ?? []).forEach((action) => {
-      hook.value = action(hook.value);
+      hook.value = typeof action === "function" ? action(hook.value) : action;
     });
 
-    const setState: SetState<T> = (action) => {
-      hook.queue.push(action);
+    const setState: SetState<T> = (actionOrValue) => {
+      hook.queue.push(actionOrValue);
+
       this.wipRoot = {
         child: null,
         parent: null,

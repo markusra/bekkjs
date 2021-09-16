@@ -46,6 +46,9 @@ function Counter() {
     <div className="counter">
       <h1>Counter</h1>
       <p>Current value: {state}</p>
+      <input type="number" onChange={(e) => setState(Number(e.target.value))}>
+        {state}
+      </input>
       <div className="buttons">
         <button
           onClick={() => {
