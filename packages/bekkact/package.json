@@ -1,6 +1,6 @@
 {
   "name": "@marauh/bekkact",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "",
   "license": "ISC",
   "source": "src/index.ts",
@@ -20,6 +20,6 @@
     "rimraf": "^3.0.2"
   },
   "dependencies": {
-    "@marauh/bekkact-dom": "0.0.6"
+    "@marauh/bekkact-dom": "0.0.7"
   }
 }
