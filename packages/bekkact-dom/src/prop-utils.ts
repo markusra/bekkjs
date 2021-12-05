@@ -1,4 +1,4 @@
-import { Props } from "../didact";
+import { Props } from "./index";
 
 export function isProperty(key: string): boolean {
   return key !== "children" && !isEventListener(key);

@@ -1,17 +1,8 @@
-import Dom from "./../didact-dom";
-export interface Props {
-  children?: Element[];
-  [key: string]: any;
-}
-export interface Element {
-  type: null | string | ((props: any) => Element);
-  props: Props;
-}
-export const TEXT_ELEMENT = "TEXT_ELEMENT";
-export const EMPTY_ELEMENT = "EMPTY_ELEMENT";
-export interface TextElement extends Element {
-  type: "TEXT_ELEMENT";
-}
+import BekkactDom, {
+  TextElement,
+  TEXT_ELEMENT,
+  Element,
+} from "@marauh/bekkact-dom";
 
 function createTextElement(text: string): TextElement {
   return {
@@ -46,23 +37,23 @@ export function createElement(
 type Updater<T> = (newValue: T | ((current: T) => T)) => void;
 
 export function useState<T>(initial: T): [T, Updater<T>] {
-  return Dom.useState(initial);
+  return BekkactDom.useState(initial);
 }
 
 export function useMemo<T>(compute: () => T, deps: any[]): T {
-  return Dom.useMemo(compute, deps);
+  return BekkactDom.useMemo(compute, deps);
 }
 
 export function useCallback<T>(callback: T, deps: any[]): T {
-  return Dom.useCallback(callback, deps);
+  return BekkactDom.useCallback(callback, deps);
 }
 
 export function useEffect(callback: () => void | (() => void), deps: any[]) {
-  return Dom.useEffect(callback, deps);
+  return BekkactDom.useEffect(callback, deps);
 }
 
 export function useRef<T>(initial: T): { current: T } {
-  return Dom.useRef(initial);
+  return BekkactDom.useRef(initial);
 }
 
 export default {

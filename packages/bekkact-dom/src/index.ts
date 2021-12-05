@@ -1,8 +1,21 @@
-import * as Didact from "../didact";
 import Worker from "./worker";
 
+export interface Props {
+  children?: Element[];
+  [key: string]: any;
+}
+export interface Element {
+  type: null | string | ((props: any) => Element);
+  props: Props;
+}
+export const TEXT_ELEMENT = "TEXT_ELEMENT";
+export const EMPTY_ELEMENT = "EMPTY_ELEMENT";
+export interface TextElement extends Element {
+  type: "TEXT_ELEMENT";
+}
+
 const worker = new Worker();
-export function render(element: Didact.Element, container: Node) {
+export function render(element: Element, container: Node) {
   worker.setRootFiber({
     dom: container,
     type: null,

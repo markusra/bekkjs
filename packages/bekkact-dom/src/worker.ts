@@ -1,6 +1,4 @@
-import * as Didact from "../didact";
-import { RequestIdleCallbackDeadline } from "../didact/types-polyfill";
-import { Props } from "../didact";
+import { Element, TEXT_ELEMENT, Props } from "./index";
 import * as PropUtils from "./prop-utils";
 
 export type Hook = {
@@ -10,7 +8,7 @@ export type Hook = {
   type: "EFFECT" | "MEMO" | "CALLBACK" | "STATE" | "REF";
 };
 
-export interface Fiber extends Didact.Element {
+export interface Fiber extends Element {
   dom: Node | null;
   parent: Fiber | null;
   child: Fiber | null;
@@ -41,7 +39,7 @@ class Worker {
     this.nextFiber = this.wipRoot;
   }
 
-  private loop(deadline: RequestIdleCallbackDeadline) {
+  private loop(deadline: any) {
     let shouldYield = false;
     while (this.nextFiber !== null && !shouldYield) {
       this.nextFiber = this.performUnitOfWork(this.nextFiber);
@@ -171,7 +169,7 @@ class Worker {
     }
   }
 
-  private findNextFiber(fiber, elements: Didact.Element[]): Fiber | null {
+  private findNextFiber(fiber, elements: Element[]): Fiber | null {
     this.reconcileChildren(fiber, elements);
 
     if (fiber.child !== null) {
@@ -188,7 +186,7 @@ class Worker {
     return null;
   }
 
-  private reconcileChildren(fiber: Fiber, elements: Didact.Element[]) {
+  private reconcileChildren(fiber: Fiber, elements: Element[]) {
     let prevSibling: Fiber | null = null;
     let oldFiber: Fiber | null = fiber.alternate?.child;
 
@@ -197,7 +195,7 @@ class Worker {
 
     let index = 0;
     while (index < elements.length) {
-      const element: Didact.Element = elements[index];
+      const element: Element = elements[index];
       let newFiber: Fiber | null = null;
 
       // Check keys
@@ -362,7 +360,7 @@ class Worker {
   }
 
   static createDom(fiber: Fiber) {
-    const isTextElement = fiber.type === Didact.TEXT_ELEMENT;
+    const isTextElement = fiber.type === TEXT_ELEMENT;
     if (typeof fiber.type === "string") {
       const node = isTextElement
         ? document.createTextNode("")
