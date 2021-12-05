@@ -1,6 +1,6 @@
 {
   "name": "@marauh/bekkact",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "license": "ISC",
   "source": "src/index.ts",
@@ -11,13 +11,15 @@
     "registry": "https://rammeverksted.jfrog.io/artifactory/api/npm/default-npm-local/"
   },
   "scripts": {
+    "clean": "rimraf dist/",
     "watch": "parcel watch",
-    "build": "parcel build"
+    "build": "npm run clean && parcel build"
   },
   "devDependencies": {
-    "parcel": "^2.0.1"
+    "parcel": "^2.0.1",
+    "rimraf": "^3.0.2"
   },
   "dependencies": {
-    "@marauh/bekkact-dom": "0.0.5"
+    "@marauh/bekkact-dom": "0.0.6"
   }
 }
