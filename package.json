@@ -17,9 +17,5 @@
     "@parcel/transformer-typescript-types": "^2.0.1",
     "parcel": "^2.0.1",
     "typescript": "^4.1.3"
-  },
-  "dependencies": {
-    "@marauh/bekkact": "0.0.7",
-    "@marauh/bekkact-dom": "0.0.7"
   }
 }

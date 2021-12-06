@@ -2,7 +2,7 @@ import BekkactDom, {
   TextElement,
   TEXT_ELEMENT,
   Element,
-} from "@marauh/bekkact-dom";
+} from "../../bekkact-dom/src";
 
 function createTextElement(text: string): TextElement {
   return {

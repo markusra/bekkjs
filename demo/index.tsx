@@ -1,5 +1,5 @@
-import Bekkact, { useEffect, useState } from "@marauh/bekkact";
-import BekkactDOM, { Element } from "@marauh/bekkact-dom";
+import Bekkact, { useEffect, useState } from "../packages/bekkact/src";
+import BekkactDOM, { Element } from "../packages/bekkact-dom/src";
 
 // @ts-ignore
 import santa from "url:./santa.svg";
