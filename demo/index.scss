@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
+
+:root {
+  --primary-color: #207c5f;
+  --secondary-color: #2aa07b;
+  --tertiary-color: #1a634c;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--primary-color);
+  color: white;
+  margin: 32px;
+}
+
+button {
+  display: block;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 12px 32px;
+  min-width: 100px;
+  border-radius: 5px;
+
+  position: relative;
+  background-color: var(--secondary-color);
+  box-shadow: 0 6px var(--tertiary-color);
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+button:hover {
+  box-shadow: 0 4px var(--tertiary-color);
+  top: 2px;
+}
+
+button:active {
+  box-shadow: 0 0 var(--tertiary-color);
+  top: 6px;
+}
+
+label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+input {
+  font-size: 1rem;
+  padding: 12px;
+  border-radius: 5px;
+  border: 3px solid #4d99bf;
+  box-shadow: 0 2px #336680;
+}
+
+input:focus {
+  outline: none;
+}
+
+.pakke-buttons {
+  display: flex;
+  margin-bottom: 32px;
+
+  button {
+    margin-right: 16px;
+  }
+}
+
+.pakke-input {
+  margin-bottom: 32px;
+}

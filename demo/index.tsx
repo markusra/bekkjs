@@ -1,6 +1,10 @@
 import Bekkact, { useEffect, useState } from "@marauh/bekkact";
 import BekkactDOM, { Element } from "@marauh/bekkact-dom";
 
+// @ts-ignore
+import santa from "url:./santa.svg";
+import "./index.scss";
+
 function App() {
   return (
     <div id="foo">
@@ -19,18 +23,19 @@ function Pakketeller() {
 
   return (
     <div className="counter">
-      <p>Antall pakker: {antallPakker}</p>
+      <h2>Antall pakker: {antallPakker}</h2>
 
-      <div className="buttons">
+      <div className="pakke-buttons">
         <button onClick={() => setAntallPakker((pakker) => pakker + 1)}>
-          Legg til pakke
+          + 1
         </button>
         <button onClick={() => setAntallPakker((pakker) => pakker - 1)}>
-          Fjern pakke
+          - 1
         </button>
       </div>
 
-      <div>
+      <div className="pakke-input">
+        <label>Sett antall pakker</label>
         <input
           type="number"
           onChange={(e) => setAntallPakker(Number(e.target.value))}
@@ -39,7 +44,7 @@ function Pakketeller() {
         </input>
       </div>
 
-      {antallPakker > 10 && <h2>Flere enn 10 pakker!</h2>}
+      {antallPakker >= 24 && <img src={santa} alt="Julenissen" width="300" />}
     </div>
   );
 }
